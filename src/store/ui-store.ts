@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState = {
   needsUpdate: false,
-  theme: 'dark',
+  theme: localStorage.getItem('theme') || 'dark',
 };
 
 const uiSlice = createSlice({

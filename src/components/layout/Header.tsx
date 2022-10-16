@@ -1,5 +1,5 @@
 import { Link } from 'gatsby';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/store-hooks';
 import { uiActions } from '../../store/ui-store';
 import { Container, Flex } from '../../styles/Global.styles';
@@ -12,6 +12,10 @@ function Header(): JSX.Element {
   const toggleTheme = () => {
     dispatch(uiActions.setTheme(currentTheme === 'dark' ? 'light' : 'dark'));
   };
+
+  useEffect(() => {
+    window.localStorage.setItem('theme', currentTheme);
+  }, [currentTheme]);
 
   return (
     <HeaderNav>
