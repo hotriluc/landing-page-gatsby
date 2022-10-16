@@ -5,11 +5,14 @@ import React from 'react';
  */
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { normalize } from 'styled-normalize';
+import { useAppSelector } from '../../hooks/store-hooks';
 
 /**
  * components
  */
 import Header from './Header';
+
+// Context
 
 const GlobalStyle = createGlobalStyle`
     ${normalize}
@@ -33,6 +36,8 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const Layout = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
+  const currentTheme = useAppSelector((state) => state.ui.theme);
+
   const darkTheme = {
     background: '#000',
     color: '#ffffff',
@@ -46,7 +51,7 @@ const Layout = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
   };
 
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={currentTheme === 'dark' ? darkTheme : lightTheme}>
       <GlobalStyle />
       <Header />
       <main>{children}</main>
