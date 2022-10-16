@@ -1,7 +1,15 @@
 import React from 'react';
 
+/**
+ * styled-components
+ */
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { normalize } from 'styled-normalize';
+
+/**
+ * components
+ */
+import Header from './Header';
 
 const GlobalStyle = createGlobalStyle`
     ${normalize}
@@ -38,6 +46,7 @@ const Layout = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
   return (
     <ThemeProvider theme={darkTheme}>
       <GlobalStyle />
+      <Header />
       <main>{children}</main>
     </ThemeProvider>
   );
