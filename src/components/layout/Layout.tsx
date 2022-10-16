@@ -36,11 +36,13 @@ const Layout = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
   const darkTheme = {
     background: '#000',
     color: '#ffffff',
+    grey: '#c6bebe',
   };
 
   const lightTheme = {
     background: '#fff',
     color: '#000',
+    grey: '#c6bebe',
   };
 
   return (
