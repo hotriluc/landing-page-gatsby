@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from '../../styles/Global.styles';
+import { Container, Flex } from '../../styles/Global.styles';
 import { HeaderNav } from '../../styles/Header.styles';
 
 function Header(): JSX.Element {
@@ -7,7 +7,7 @@ function Header(): JSX.Element {
     <HeaderNav>
       <Container>
         hello
-        {/* <Flex>
+        <Flex spaceBetween noHeight>
           <Logo></Logo>
 
           <Menu>
@@ -16,7 +16,7 @@ function Header(): JSX.Element {
               <span></span>
             </button>
           </Menu>
-        </Flex> */}
+        </Flex>
       </Container>
     </HeaderNav>
   );

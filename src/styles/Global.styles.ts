@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.div<{ fluid?: boolean }>`
   flex-grow: 1;
   margin: 0 auto;
   padding: 0 32px;
@@ -28,6 +28,36 @@ export const Container = styled.div`
     `}
 `;
 
-export const Flex = styled.div`
+export const Flex = styled.div<{
+  flexEnd?: boolean;
+  spaceBetween?: boolean;
+  alignTop?: boolean;
+  noHeight?: boolean;
+}>`
+  position: relative;
   display: flex;
+  align-items: center;
+
+  ${(props) =>
+    props.flexEnd &&
+    css`
+      justify-content: flex-end;
+    `}
+  ${(props) =>
+    props.spaceBetween &&
+    css`
+      justify-content: space-between;
+    `}
+
+    ${(props) =>
+    props.alignTop &&
+    css`
+      align-items: top;
+    `}
+
+    ${(props) =>
+    props.noHeight &&
+    css`
+      height: 0;
+    `}
 `;
