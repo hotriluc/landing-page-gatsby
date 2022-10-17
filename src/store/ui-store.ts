@@ -1,8 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { CursorType } from '../interfaces/Cursor';
 
-const initialState = {
+const initialState: {
+  needsUpdate: boolean;
+  theme: string;
+  cursorType: CursorType;
+} = {
   needsUpdate: false,
   theme: localStorage.getItem('theme') || 'dark',
+  cursorType: null,
 };
 
 const uiSlice = createSlice({
@@ -14,6 +20,9 @@ const uiSlice = createSlice({
     },
     setTheme: (state, action: PayloadAction<'light' | 'dark'>) => {
       state.theme = action.payload;
+    },
+    setCursorType: (state, action: PayloadAction<null | CursorType>) => {
+      state.cursorType = action.payload;
     },
   },
 });

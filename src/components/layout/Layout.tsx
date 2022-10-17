@@ -5,12 +5,15 @@ import React from 'react';
  */
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { normalize } from 'styled-normalize';
-import { useAppSelector } from '../../hooks/store-hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/store-hooks';
 
 /**
  * components
  */
 import Header from './Header';
+import CustomCursor from '../ui/CustomCursor';
+import { uiActions } from '../../store/ui-store';
+import { CursorType } from '../../interfaces/Cursor';
 
 // Context
 
@@ -18,6 +21,7 @@ const GlobalStyle = createGlobalStyle`
     ${normalize}
     * {
         text-decoration: none;
+        cursor: none;
     }
 
     html {
@@ -37,23 +41,29 @@ const GlobalStyle = createGlobalStyle`
 
 const Layout = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
   const currentTheme = useAppSelector((state) => state.ui.theme);
+  const dispatch = useAppDispatch();
+
+  const onCursor = (cursorType: CursorType) => {
+    dispatch(uiActions.setCursorType(cursorType));
+  };
 
   const darkTheme = {
     background: '#000',
     color: '#ffffff',
-    grey: '#c6bebe',
+    red: 'red',
   };
 
   const lightTheme = {
     background: '#fff',
     color: '#000',
-    grey: '#c6bebe',
+    red: 'red',
   };
 
   return (
     <ThemeProvider theme={currentTheme === 'dark' ? darkTheme : lightTheme}>
       <GlobalStyle />
-      <Header />
+      <CustomCursor />
+      <Header onCursor={onCursor} />
       <main>{children}</main>
     </ThemeProvider>
   );

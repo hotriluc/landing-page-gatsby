@@ -22,7 +22,7 @@ export const Logo = styled.div`
   span {
     height: 1rem;
     width: 1rem;
-    background-color: ${(props) => props.theme.grey};
+    background-color: ${(props) => props.theme.red};
     display: inline-block;
     position: relative;
     border-radius: 50%;

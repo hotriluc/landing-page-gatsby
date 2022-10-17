@@ -61,3 +61,29 @@ export const Flex = styled.div<{
       height: 0;
     `}
 `;
+
+export const Cursor = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  background-color: ${(props) => props.theme.red};
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.1s ease-in-out;
+  transition-property: width, height, border;
+  will-change: width, height, transform, border;
+  pointer-events: none;
+  z-index: 999;
+
+  &.cursor {
+    border: 2px solid ${(props) => props.theme.color} !important;
+  }
+  &.hovered {
+    background-color: transparent;
+    border: 2px solid ${(props) => props.theme.red};
+    height: 48px;
+    width: 48px;
+  }
+`;

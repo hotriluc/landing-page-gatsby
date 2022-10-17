@@ -1,11 +1,16 @@
 import { Link } from 'gatsby';
 import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/store-hooks';
+import { CursorType } from '../../interfaces/Cursor';
 import { uiActions } from '../../store/ui-store';
 import { Container, Flex } from '../../styles/Global.styles';
 import { HeaderNav, Logo, Menu } from '../../styles/Header.styles';
 
-function Header(): JSX.Element {
+interface HeaderProps {
+  onCursor: (cursorType: CursorType) => void;
+}
+
+function Header({ onCursor }: HeaderProps): JSX.Element {
   const dispatch = useAppDispatch();
   const currentTheme = useAppSelector((state) => state.ui.theme);
 
@@ -25,9 +30,16 @@ function Header(): JSX.Element {
     >
       <Container>
         <Flex spaceBetween noHeight>
-          <Logo>
+          <Logo
+            onMouseEnter={() => onCursor('hovered')}
+            onMouseLeave={() => onCursor(null)}
+          >
             <Link to="/">B</Link>
-            <span onClick={toggleTheme}></span>
+            <span
+              onClick={toggleTheme}
+              onMouseEnter={() => onCursor('cursor')}
+              onMouseLeave={() => onCursor(null)}
+            ></span>
             <Link to="/">W</Link>
           </Logo>
 
