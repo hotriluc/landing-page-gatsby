@@ -74,7 +74,12 @@ function HomeBanner() {
           <source src={video} type="video/mp4" />
         </video>
       </Video>
-      <Canvas height={size.height} width={size.width} ref={canvas} />
+      <Canvas
+        key={theme}
+        height={size.height}
+        width={size.width}
+        ref={canvas}
+      />
       <BannerTitle>
         <Headline>DIG</Headline>
         <Headline>DEEP</Headline>
