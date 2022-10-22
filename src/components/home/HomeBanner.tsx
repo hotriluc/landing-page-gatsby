@@ -9,8 +9,13 @@ import {
 import video from '../../assets/video/video.mp4';
 import useWindowSize from '../../hooks/useWindowSize';
 import { useAppSelector } from '../../hooks/store-hooks';
+import { CursorType } from '../../interfaces/Cursor';
 
-function HomeBanner() {
+interface HomeBannerProps {
+  onCursor: (cursorType: CursorType) => void;
+}
+
+function HomeBanner({ onCursor }: HomeBannerProps) {
   const canvas = useRef(null);
   const size = useWindowSize();
   const theme = useAppSelector((state) => state.ui.theme);
@@ -67,6 +72,27 @@ function HomeBanner() {
     });
   }, [theme]);
 
+  const parent = {
+    initial: { y: 800 },
+    animate: {
+      y: 0,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const child = {
+    initial: { y: 800 },
+    animate: {
+      y: 0,
+      transition: {
+        duration: 1,
+        ease: [0.6, 0.05, -0.01, 0.9],
+      },
+    },
+  };
+
   return (
     <Banner>
       <Video>
@@ -79,10 +105,12 @@ function HomeBanner() {
         height={size.height}
         width={size.width}
         ref={canvas}
+        onMouseEnter={() => onCursor('hovered')}
+        onMouseLeave={() => onCursor(null)}
       />
-      <BannerTitle>
-        <Headline>DIG</Headline>
-        <Headline>DEEP</Headline>
+      <BannerTitle variants={parent} initial="initial" animate="animate">
+        <Headline variants={child}>DIG</Headline>
+        <Headline variants={child}>DEEP</Headline>
       </BannerTitle>
     </Banner>
   );

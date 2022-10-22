@@ -3,7 +3,7 @@ import { useAppSelector } from '../../hooks/store-hooks';
 import { Cursor } from '../../styles/Global.styles';
 
 function CustomCursor() {
-  const [mousePosition, setMousePosition] = useState({ x: '50%', y: '50%' });
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const cursorType = useAppSelector((state) => state.ui.cursorType);
 
   const onMouseMove = (event) => {
