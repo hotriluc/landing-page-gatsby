@@ -1,11 +1,12 @@
 import * as React from 'react';
 import type { HeadFC } from 'gatsby';
 import Layout from '../components/layout/Layout';
+import HomeBanner from '../components/home/HomeBanner';
 
 const IndexPage = () => {
   return (
     <Layout>
-      <div>hello it is home page</div>
+      <HomeBanner />
     </Layout>
   );
 };
