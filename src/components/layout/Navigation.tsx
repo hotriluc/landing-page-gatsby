@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Link } from 'gatsby';
 import React, { useState } from 'react';
 
@@ -128,9 +128,23 @@ export const Navigation = () => {
             className="reveal"
           ></motion.div>
           <div className="video">
-            <video key={revealVideo.key} loop autoPlay muted>
-              <source src={video.default} type="video/mp4" />
-            </video>
+            <AnimatePresence initial={false}>
+              <motion.video
+                initial={{ opacity: 0 }}
+                exit={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                  duration: 0.2,
+                  ease: 'easeInOut',
+                }}
+                key={revealVideo.key}
+                loop
+                autoPlay
+                muted
+              >
+                <source src={video.default} type="video/mp4" />
+              </motion.video>
+            </AnimatePresence>
           </div>
         </NavVideos>
       </Container>
