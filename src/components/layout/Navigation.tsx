@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Link } from 'gatsby';
 import React, { SetStateAction, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/store-hooks';
+import { CursorType } from '../../interfaces/Cursor';
 import { uiActions } from '../../store/ui-store';
 
 import { Container, Flex } from '../../styles/Global.styles';
@@ -48,7 +49,11 @@ const navRoutes: { id: number; title: string; path: string; video: string }[] =
     },
   ];
 
-export const Navigation = () => {
+interface NavigationProps {
+  onCursor: (cursorType: CursorType) => void;
+}
+
+export const Navigation = ({ onCursor }: NavigationProps) => {
   const dispatch = useAppDispatch();
   const [revealVideo, setRevealVideo] = useState({
     show: false,
@@ -80,7 +85,10 @@ export const Navigation = () => {
               <NavHeader>
                 <Flex spaceBetween noHeight>
                   <h2>Projects</h2>
-                  <CloseNav>
+                  <CloseNav
+                    onMouseEnter={() => onCursor('cursor')}
+                    onMouseLeave={() => onCursor(null)}
+                  >
                     <button onClick={closeNavigation}>
                       <span></span>
                       <span></span>
@@ -107,6 +115,8 @@ export const Navigation = () => {
                           key: el.id.toString(),
                         });
                       }}
+                      onMouseEnter={() => onCursor('cursor')}
+                      onMouseLeave={() => onCursor(null)}
                     >
                       <Link to={`/projects${el.path}`}>
                         <motion.div

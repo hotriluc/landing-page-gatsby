@@ -81,9 +81,12 @@ export const Cursor = styled.div`
     border: 2px solid ${(props) => props.theme.color} !important;
   }
   &.hovered {
-    background-color: transparent;
+    background-color: transparent !important;
     border: 2px solid ${(props) => props.theme.red};
     height: 48px;
     width: 48px;
+  }
+  &.nav-open {
+    background-color: ${(props) => props.theme.color};
   }
 `;

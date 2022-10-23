@@ -112,7 +112,6 @@ export const NavVideos = styled.div`
       height: 100%;
       width: 100%;
       object-fit: cover;
-      filter: grayscale();
     }
   }
 `;

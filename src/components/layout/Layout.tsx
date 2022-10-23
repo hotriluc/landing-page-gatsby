@@ -64,7 +64,7 @@ const Layout = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
     <ThemeProvider theme={currentTheme === 'dark' ? darkTheme : lightTheme}>
       <GlobalStyle />
       <CustomCursor />
-      <Navigation />
+      <Navigation onCursor={onCursor} />
       <Header onCursor={onCursor} />
       <main>{children}</main>
     </ThemeProvider>

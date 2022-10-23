@@ -14,7 +14,6 @@ export const Video = styled.div`
   width: 100%;
 
   video {
-    filter: grayscale();
     object-fit: cover;
   }
 `;
