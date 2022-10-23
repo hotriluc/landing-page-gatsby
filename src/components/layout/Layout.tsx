@@ -14,6 +14,7 @@ import Header from './Header';
 import CustomCursor from '../ui/CustomCursor';
 import { uiActions } from '../../store/ui-store';
 import { CursorType } from '../../interfaces/Cursor';
+import { Navigation } from './Navigation';
 
 // Context
 
@@ -63,6 +64,7 @@ const Layout = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
     <ThemeProvider theme={currentTheme === 'dark' ? darkTheme : lightTheme}>
       <GlobalStyle />
       <CustomCursor />
+      <Navigation />
       <Header onCursor={onCursor} />
       <main>{children}</main>
     </ThemeProvider>
