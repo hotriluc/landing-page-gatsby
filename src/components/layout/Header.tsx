@@ -22,6 +22,10 @@ function Header({ onCursor }: HeaderProps): JSX.Element {
     window.localStorage.setItem('theme', currentTheme);
   }, [currentTheme]);
 
+  const openMenu = () => {
+    dispatch(uiActions.setToggleMenu());
+  };
+
   return (
     <HeaderNav
       initial={{ y: -72, opacity: 0 }}
@@ -44,7 +48,7 @@ function Header({ onCursor }: HeaderProps): JSX.Element {
           </Logo>
 
           <Menu>
-            <button>
+            <button onClick={openMenu}>
               <span></span>
               <span></span>
             </button>

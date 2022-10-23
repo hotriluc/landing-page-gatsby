@@ -5,10 +5,12 @@ const initialState: {
   needsUpdate: boolean;
   theme: string;
   cursorType: CursorType;
+  toggleMenu: boolean;
 } = {
   needsUpdate: false,
   theme: localStorage.getItem('theme') || 'dark',
   cursorType: null,
+  toggleMenu: false,
 };
 
 const uiSlice = createSlice({
@@ -23,6 +25,9 @@ const uiSlice = createSlice({
     },
     setCursorType: (state, action: PayloadAction<null | CursorType>) => {
       state.cursorType = action.payload;
+    },
+    setToggleMenu: (state) => {
+      state.toggleMenu = !state.toggleMenu;
     },
   },
 });
