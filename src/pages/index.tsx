@@ -5,6 +5,7 @@ import HomeBanner from '../components/home/HomeBanner';
 import { useAppDispatch } from '../hooks/store-hooks';
 import { CursorType } from '../interfaces/Cursor';
 import { uiActions } from '../store/ui-store';
+import HomeContent from '../components/home/HomeContent';
 
 const IndexPage = () => {
   const dispatch = useAppDispatch();
@@ -16,6 +17,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <HomeBanner onCursor={onCursor} />
+      <HomeContent />
     </Layout>
   );
 };
